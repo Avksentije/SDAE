@@ -1,0 +1,12 @@
+Map.addLayer(GAUL)
+
+var AOI = ee.FeatureCollection('FAO/GAUL_SIMPLIFIED_500m/2015/level2');
+//Map.centerObject(AOI,9)
+Map.addLayer(AOI, {}, "Area of Interest")
+
+var aoiArea=AOI.geometry().area().divide(1000000);
+print('AOI Area: ',aoiArea,"[km²]")
+
+var simplified = collection.geometry().simplify(1000); // 1000 metros de tolerancia
+var smallerCollection = collection.limit(100); // solo los primeros 100 elementos
+
