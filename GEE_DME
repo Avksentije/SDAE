@@ -1,0 +1,14 @@
+// Load an image by name.
+
+print(image);
+var image = ee.Image("USGS/SRTMGL1_003")
+Map.addLayer(image, {min:0, max:1000, palette: ["blue", "green", "white"]})
+
+
+
+
+var image2 = image.where(image.lte(1000),1)
+image2 = image2.where(image.gt(1000),2)
+Map.addLayer(image2, {min:0, max:2, palette: ["red", "yellow", "purple"]})
+
+
